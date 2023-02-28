@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-bind:class="{important: isActive}">Texte a afficher!</p>
+      <input type="checkbox" v-model="isActive" />
+      <ul><b>Nom des personnes</b>
+        <li v-for="personne in personnes">
+          {{personne.Nom}}
+        </li>
+      </ul>
+      <ul><b>Prenom des personnes</b>
+        <li v-for="personne in personnes">
+          {{personne.Prenom}}
+        </li>
+      </ul>
+      <ul><b>Address des personnes</b>
+        <li v-for="personne in personnes">
+          {{personne.Address}}
+        </li>
+      </ul>
+      <button @click="Toggle">Toggle</button>
+      <div class="myDiv" v-if="show">Vue is awesome! 😁</div>
+      <div class="myDiv" v-else>Oh no 😢</div>
+
+    </div>
+    <script>
+      Vue.createApp({
+        data() {
+          return {
+            isActive: false,
+            personnes: [{
+              Nom: 'Tom',
+              Prenom: 'Sawyer',
+              Address: 'Missisipi'
+            }, {
+              Nom: 'Huckle',
+              Prenom: 'Burryfin',
+              Address: 'Misouri'
+            }, {
+              Nom: 'Becky',
+              Prenom: 'Tatcher',
+              Address: 'America'
+            }, {
+              Nom: 'Joe',
+              Prenom: 'Indien',
+              Address: 'Prison'
+            }],
+            show: false
+          }
+        },
+        methods: {
+          Toggle() {
+            this.show = !this.show
+          }
+        }
+      }).mount("#app")
+    </script>
+    <style>
+      .important {
+        background-color: red;
+      }
+      ul {
+        list-style: square inside url("https://www.w3schools.com/css/sqpurple.gif");
+      }
+      button {
+        
+        display: inline-block;
+                    outline: none;
+                    cursor: pointer;
+                    font-weight: 500;
+                    border-radius: 3px;
+                    padding: 0 15px;
+                    border-radius: 4px;
+                    color: #6200ee;
+                    background: transparent;
+                    line-height: 1.15;
+                    font-size: 14px;
+                    height: 36px;
+                    word-spacing: 0px;
+                    letter-spacing: .0892857143em;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    min-width: 64px;
+                    border: 1px solid #6200ee;
+                    text-align: center;
+                    transition: background 280ms cubic-bezier(0.4, 0, 0.2, 1);    
+      }
+      .myDiv {
+        border: 5px outset red;
+        background-color: lightblue;    
+        text-align: center;
+      }
+    </style>
+  </body>
+</html>

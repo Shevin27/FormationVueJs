@@ -1,0 +1,86 @@
+<style>
+  button {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #cc7a00;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #ff9800;
+  }
+
+  @media (min-width: 568px) {
+
+    .name-item,
+    .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .name-item input,
+    .name-item div {
+      width: calc(50% - 20px);
+    }
+
+    input {
+      box-shadow: inset #abacaf 0 0 0 2px;
+      border: 0;
+      background: rgba(0, 0, 0, 0);
+      appearance: none;
+      width: 50%;
+      position: relative;
+      border-radius: 3px;
+      padding: 9px 12px;
+      line-height: 1.4;
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 400;
+      height: 40px;
+      transition: all .2s ease;
+
+      :hover {
+        box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 2px;
+      }
+
+      :focus {
+        background: #fff;
+        outline: 0;
+        box-shadow: 0 0 0 0 #fff inset, #1de9b6 0 0 0 3px;
+      }
+    }
+
+    h1 {
+      padding: 60px;
+      text-align: center;
+      background: #bde4dc;
+      color: rgb(255, 0, 0);
+      font-size: 30px;
+    }
+</style>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<div id="app">
+  <h1>{{ message }}</h1>
+  <input v-model="message1" placeholder="edit me" />
+  <button @click="AssignNewValue">Changer la valeur du header</button>
+</div>
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        message: 'Hello Vue!',
+        message1: ''
+      }
+    },
+    methods: {
+      AssignNewValue() {
+        this.message = this.message1;
+      }
+    }
+  }).mount('#app')
+</script>
