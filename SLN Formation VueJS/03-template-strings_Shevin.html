@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template Strings!</title>
+    <link rel="stylesheet" href="../reset.css" />
+  </head>
+
+  <body>
+    <h1 id="header1"></h1>
+    <h2 id="header2"></h2>
+    <input type = "button" onclick = "AfficheMots()" value = "Afficher les mots clefs">  
+    <p id="mot_clef"></p>
+    <script>
+      const biere = {
+        nom: "La Chouffe IPA",
+        brasserie: "Chouffe",
+        motsCles: ["ipa", "forte", "épicée", "amère"],
+      };
+      document.getElementById("header1").innerHTML = biere.nom;
+      document.getElementById("header2").innerHTML = biere.brasserie;
+      //document.getElementById("mot_clef").innerHTML = biere.motsCles;
+      
+      function AfficheMots() {   
+          document.getElementById("mot_clef").innerHTML = biere.motsCles;
+         }  
+
+    </script>
+  </body>
+</html>

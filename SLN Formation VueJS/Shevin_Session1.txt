@@ -1,0 +1,131 @@
+
+1##Types
+
+1 & 2. Var et let sont tous deux utilisés pour la déclaration de variable en javascript, mais la différence entre eux est que les variables déclarées par le mot-clé Var sont limitées au corps de la fonction immédiate (d'où la portée de la fonction) tandis que les variables let sont limitées au bloc englobant immédiat désigné par { } (d'où la portée du bloc).. La variable déclarée par let ne peut pas être redéclarée et doit être déclarée avant utilisation alors que les variables déclarées avec le mot-clé var sont hissées
+
+3. Remplacer let par const :
+
+Resultats : 
+Jacques 80 something --> OK pour le 1ier log
+
+Uncaught TypeError TypeError: Assignment to constant variable. --> 2nd log KO
+
+La cause : Dans JavaScript ce type d'erreur se produit lorsque nous essayons de réaffecter une valeur à la variable const (dans le 2ieme log console). Si nous avons déclaré une variable avec const , elle ne peut pas être réaffectée.
+
+## 1.2 Tableaux
+1. Remplacer toutes les occurences de `let` par `const`.
+
+2. Expliquer l'absence d'erreur.
+
+Réponse : 
+
+le code s'exécute toujours sans erreur. 
+On a pas eu d'erreur car le constant pour les tableaux (arrays) "fruits" et "vegetables" n'ont été déclarés qu'une seule fois.
+
+Cependant, si une constante est un objet ou un tableau, ses propriétés ou éléments peuvent être mis à jour ou supprimés. (dans le cas de la 'banana' qui a été rajoutée dans le tablea "fruits")
+
+
+## 1.3 Objets
+
+1. Remplacer toutes les occurences de `let` par `const`.
+
+2. Expliquer l'erreur.
+
+3. Corriger le code en conservant le maximum de valeurs constantes
+
+
+Résultat : 
+
+{sound: true, music: false, graphics: 'high', resolution: Array(2)} {time: 384, score: 47, opponent: 'Jacques'}
+Uncaught TypeError TypeError: Assignment to constant variable.
+
+Nous voyons que seul le premier log a été imprimé avec succès. 
+Uncaught TypeError TypeError: Assignment to constant variable:  Dans JavaScript cet erreur se produit lorsque nous essayons de réaffecter une valeur à la variable const. Si nous avons déclaré une variable avec const , elle ne peut pas être réaffectée. Dans notre cas, nous avons essayé de réassigner la variable constante "savedGame" à savedGame = {};
+
+
+3. Pour obtenir le maximum de valeurs constantes :?
+
+
+      const settings = {
+        sound: true,
+        music: false,
+        graphics: "high",
+        resolution: [1920, 1080],
+      };
+
+      let savedGame = {
+        time: 384,
+        score: 47,
+        opponent: "Jacques",
+      };
+
+
+Résultats:
+
+{sound: true, music: false, graphics: 'high', resolution: Array(2)} {time: 384, score: 47, opponent: 'Jacques'}
+{sound: true, music: true, graphics: 'high', resolution: Array(2)} {}
+
+
+## 1.4 Portée
+
+1. Expliquer le résultat dans la console
+
+2. Modifier pour obtenir 0, 1, 2
+
+4. Corriger le code en conservant le maximum de valeurs constantes.
+
+Réponses:
+
+1. La déclaration d'une variable avec var dans notre boucle "for" ne limite pas sa portée à ce bloc de code comme elle le ferait avec un "let". Comme son existence s'étend au-delà de la boucle "for", lorsque la valeur est évaluée par le rappel setTimeout(), vous obtenez la dernière valeur à laquelle elle a été définie.
+
+Alors le résultat est donc bien :
+
+The number is 3
+
+
+2. Pour obtenir, on utilise 'let' au lieu de 'var' : 
+
+The number is 0
+The number is 1
+The number is 2
+
+  for (let i = 0; i < 3; i++) {
+        setTimeout(function () {
+          console.log("The number is " + i);
+        }, 1000);
+      }
+
+On voit qu'un "for" est utilisée ici qui boucle plusieurs fois sur un bloc de code.
+
+Dans notre exemple, la boucle utilise ces 3 expressions comme critères : 
+
+L'expression 1 définit une variable avant le début de la boucle (soit i = 0).
+
+L'expression 2 définit la condition d'exécution de la boucle (i doit être inférieur à 3).
+
+L'expression 3 augmente une valeur (i++) chaque fois que le bloc de code dans la boucle a été exécuté.
+
+
+
+4. const i = 0
+      for (i;  i < 3; i++) {
+        setTimeout(function () {
+          console.log("The number is " + i);
+        }, 1000);
+      }
+Résultat: The number is 0
+
+
+Si nous voulons avoir 0,1,2 comme étant Cons, nous pouvons faire un truc de ce genre :
+
+      const array1 = ['0', '1', '2'];
+
+      for (const element of array1) {
+        console.log("The number is " + element);;
+      }
+
+
+
+
+
+
